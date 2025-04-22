@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Wordspot</title>
+</head>
+<body>
+    <div>
+        <h1>Word of the day</h1>
+        <button onclick="getWord()">Select a word</button>
+        <div id="output">
+
+        </div>
+
+        <script>
+            async function getWord() {
+              const res = await fetch("/getFancyWord");
+              const data = await res.json();
+              document.getElementById("output").innerHTML =
+                `<h2>${data.word}</h2><p>${data.definition}</p>`;
+            }
+          </script>
+    </div>
+</body>
+</html>
